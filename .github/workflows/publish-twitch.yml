@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Prepare and audit exact tested release files
         run: |
-          curl --fail --location --retry 3 'https://raw.githubusercontent.com/Lumia1193/orbit-releases/${{ github.sha }}/.github/workflows/release-payload.txt' --output release-payload.txt
+          curl --fail --location --retry 3 "https://raw.githubusercontent.com/Lumia1193/orbit-releases/$GITHUB_SHA/.github/workflows/release-payload.txt" --output release-payload.txt
           curl --fail --location --retry 3 'https://github.com/Lumia1193/trackr-releases/releases/download/module-build-2026101403/trackr-1.0.module.zip' --output base.zip
           python3 - <<'PY'
           import base64,gzip,hashlib,json,zipfile
