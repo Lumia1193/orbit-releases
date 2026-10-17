@@ -1,4 +1,4 @@
-name: Publish Orbit shared widget sessions 1.0
+name: Publish Orbit Twitch audio-video synchronization 1.0
 on:
   workflow_dispatch:
   push:
@@ -7,7 +7,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: orbit-shared-pages-2026101702
+  group: orbit-shared-pages-2026101703
   cancel-in-progress: false
 jobs:
   publish:
@@ -43,5 +43,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          if gh release view build-2026101702 --repo "$GH_REPO" >/dev/null 2>&1; then exit 1; fi
-          gh release create build-2026101702 Orbit-1.0.zip trackr-1.0.module.zip apple-music-1.0.module.zip twitch-1.0.module.zip orbit-catalog-v2.json orbit-catalog.json --repo "$GH_REPO" --latest --title 'Orbit 1.0' --notes 'Twitch standby UX: a clear central Start stream or Playback paused - Resume action replaces the unexplained black screen on startup and page return. Clicking the video area uses the existing playback control, with starting feedback and no autoplay. Nine interface languages, XL/L/M/S and transparent compact backgrounds. Existing lifecycle correction retained: iCUE editor preview is blocked using the documented iCUE.isPreview SDK flag, including the local-file launcher. Leaving a page immediately pauses the owned stream and returning does not restart it. Restored selections start in standby until explicit Play. Distinct peer-session IDs prevent stale widgets sharing one cookie from pausing or stopping another page. No duplicate reader or automatic foreground takeover. Source pause, manual resume and blocked previews tested with real synthetic WebRTC on XL/L/M/S. Apple Music now uses native L/M/S layouts instead of scaling down XL. XL composition unchanged; L uses two columns, M a stacked layout, and S shows only artwork, track info and playback, seek and volume controls. Layouts tested with nine languages, long titles, light/dark themes and visualizers. Pairing and stored preferences retained. TRACKR and Twitch module revisions and exact bytes retained. Shared widget connection and settings across Xeneon pages. Twitch reuses the explicit initial Orbit approval for new isolated iCUE partitions, retains account-bound last playback and shares language, theme, quality, audio and display preferences. TRACKR offers an authenticated same-origin local widget session after previous approval, recovers saved library and preferences, keeps backup-only scope restricted and never redirects a file widget with unpaired local media. Apple Music shares preferences through its existing authenticated relay and keeps account/player state in the Windows app. Orbit refreshes managed Apple widget code with recoverable code backups, without replacing pairing, manifest or iCUE storage. XL/L/M/S browser fixtures use separate contexts and fake accounts; native install/uninstall/update and playback recovery tests remain isolated. Public version stays 1.0. No guest mode, no iCUE exports or private account/profile files on GitHub.'
+          if gh release view build-2026101703 --repo "$GH_REPO" >/dev/null 2>&1; then exit 1; fi
+          gh release create build-2026101703 Orbit-1.0.zip trackr-1.0.module.zip apple-music-1.0.module.zip twitch-1.0.module.zip orbit-catalog-v2.json orbit-catalog.json --repo "$GH_REPO" --latest --title 'Orbit 1.0' --notes 'Twitch audio/video synchronization: the official player tab now sends its own audio and video together in one WebRTC MediaStream. Direct playback from the source tab is explicitly suppressed to prevent duplicate audio. No microphone or system-audio capture. Volume, page pause, explicit resume, update recovery and iCUE preview blocking retained. Synchronization diagnostic translated into nine languages. Tested with synthetic audiovisual signals, strict autoplay policy and XL/L/M/S; physical Xeneon listening remains to be confirmed. Apple Music and TRACKR packages retained byte-for-byte. Public version remains 1.0. No personal accounts, browser profiles, credentials, private email or iCUE exports included.'
