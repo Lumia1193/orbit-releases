@@ -1,4 +1,4 @@
-name: Publish Orbit Twitch audio-video synchronization 1.0
+name: Publish Orbit Twitch stop on iCUE exit 1.0
 on:
   workflow_dispatch:
   push:
@@ -7,7 +7,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: orbit-shared-pages-2026101703
+  group: orbit-shared-pages-2026101704
   cancel-in-progress: false
 jobs:
   publish:
@@ -43,5 +43,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          if gh release view build-2026101703 --repo "$GH_REPO" >/dev/null 2>&1; then exit 1; fi
-          gh release create build-2026101703 Orbit-1.0.zip trackr-1.0.module.zip apple-music-1.0.module.zip twitch-1.0.module.zip orbit-catalog-v2.json orbit-catalog.json --repo "$GH_REPO" --latest --title 'Orbit 1.0' --notes 'Twitch audio/video synchronization: the official player tab now sends its own audio and video together in one WebRTC MediaStream. Direct playback from the source tab is explicitly suppressed to prevent duplicate audio. No microphone or system-audio capture. Volume, page pause, explicit resume, update recovery and iCUE preview blocking retained. Synchronization diagnostic translated into nine languages. Tested with synthetic audiovisual signals, strict autoplay policy and XL/L/M/S; physical Xeneon listening remains to be confirmed. Apple Music and TRACKR packages retained byte-for-byte. Public version remains 1.0. No personal accounts, browser profiles, credentials, private email or iCUE exports included.'
+          if gh release view build-2026101704 --repo "$GH_REPO" >/dev/null 2>&1; then exit 1; fi
+          gh release create build-2026101704 Orbit-1.0.zip trackr-1.0.module.zip apple-music-1.0.module.zip twitch-1.0.module.zip orbit-catalog-v2.json orbit-catalog.json --repo "$GH_REPO" --latest --title 'Orbit 1.0' --notes 'Twitch now closes the entire owned stream browser, audio and video, when iCUE exits completely. A native same-Windows-session host monitor reports changes over the private module pipe. New playback is blocked while iCUE is absent; stale widgets and late connection offers cannot resurrect the source. Reopening requires explicit Play. Unknown process observations do not interrupt playback. Minimized or tray-running iCUE is not treated as exited. Audio/video synchronization, volume, page pause, update recovery and preview blocking retained. Tested with fake host probes, actual synthetic WebRTC browser shutdown, late-offer race tests and native isolated install/update/uninstall tests. Accounts and preferences preserved. Apple Music and TRACKR packages unchanged. Public version remains 1.0. No personal accounts, profiles, credentials, private email or iCUE exports included.'
